@@ -1,2 +1,7 @@
 input/
 output/
+
+reports/*.dat
+reports/*.pp
+reports/*.ppn
+reports/*.csv
