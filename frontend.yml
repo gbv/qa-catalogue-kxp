@@ -1,0 +1,25 @@
+# docker-compose.yml for qa-catalogue-web (frontend)
+
+services:
+  app:
+    image: ${IMAGE:-qa-catalogue-web}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./${BASE_OUTPUT_DIR:-output}:/var/www/html/metadata-qa
+      - ./${CONFIG:-config}:/var/www/html/config
+    ports:
+      - ${WEBPORT:-80}:80
+    container_name: ${CONTAINER:-qa-catalogue-web}
+
+    # FIXME: this is only for testing. Better use Docker networks!
+    # networks:
+    # - qa-catalogue-network
+    extra_hosts:
+    - qa-catalogue-solr-host:host-gateway
+
+#networks:
+#  qa-catalogue-network:
+#    name: qa-catalogue-network
+#    external: true

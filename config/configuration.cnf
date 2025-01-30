@@ -1,0 +1,22 @@
+default-tab=about
+
+display-completeness=false
+display-classifications=false
+display-authorities=false
+display-pareto=false
+display-history=false
+display-timeline=false
+
+# TODO: rename
+showAdvancedSearchForm=true
+
+# TODO: which of these is needed?
+#id=k10plus_pica_grouped
+#db=k10plus_pica_grouped
+catalogue=k10plus_pica_grouped
+#indexName=k10plus_pica_grouped
+#dirName=k10plus_pica_grouped
+
+# TODO: why two variables?
+#solrEndpoint4ValidationResults=http://localhost:8983/solr/
+mainSolrEndpoint=http://qa-catalogue-solr-host:8983/solr/
