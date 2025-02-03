@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+# These system packages are required because qa-catalogue-slim does not run in Docker yet
+apt-get install jq
+    r-base \
+    r-cran-tidyverse \
+    r-cran-stringr \
+    r-cran-gridextra \
+    r-cran-rsqlite \
+    r-cran-httr \
+    sqlite3 \
+    php-cli

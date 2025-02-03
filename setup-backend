@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+# no backend-only docker image yet, so we use sources
+
+source default.env
+
+# TODO: install dependencies (php, sqlite3, R...)
+
+if [ -d qa-catalogue ]; then git -C qa-catalogue pull ; else git clone https://github.com/pkiraly/qa-catalogue.git; fi
+mkdir -p input; [ -L qa-catalogue/input ] || ln -s ../input qa-catalogue/input
+mkdir -p output; [ -L qa-catalogue/output ] || ln -s ../output qa-catalogue/output
+
+cd qa-catalogue
+mvn clean install

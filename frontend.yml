@@ -2,7 +2,7 @@
 
 services:
   app:
-    image: ${IMAGE:-qa-catalogue-web}
+    image: ${FRONTEND_IMAGE:-qa-catalogue-web}
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
       - ./${CONFIG:-config}:/var/www/html/config
     ports:
       - ${WEBPORT:-80}:80
-    container_name: ${CONTAINER:-qa-catalogue-web}
+    container_name: ${FRONTEND_CONTAINER:-qa-catalogue-web}
 
     # FIXME: this is only for testing. Better use Docker networks!
     # networks:

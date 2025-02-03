@@ -1,0 +1,4 @@
+#!/bin/bash
+
+solr-precreate qa-catalogue_1 /opt/solr/server/solr/configsets/qa-catalogue
+solr-precreate qa-catalogue_2 /opt/solr/server/solr/configsets/qa-catalogue

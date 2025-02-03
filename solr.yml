@@ -1,0 +1,18 @@
+# docker-compose.yml for solr
+
+services:
+  solr:
+    image: ${SOLR_IMAGE}
+    user: 1000:1000 # TODO: don't hardcode
+    ports:
+      - ${SOLR_PORT:-8983}:8983
+    volumes:
+      - ./${SOLR_DATA:-solrdata}:/var/solr
+      - ./solrconfig:/opt/solr/server/solr/configsets/_default:ro
+        #      - ./solr-init:/opt/solr/server/solr/configsets/_default:ro
+      - ./solr-init:/opt/solr/docker/scripts:ro
+    command:
+      - solr-init 
+    container_name: ${SOLR_CONTAINER:-qa-catalogue-solr}
+
+

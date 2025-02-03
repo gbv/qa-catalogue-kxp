@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+set -e
+env=default.env
+source "$env"
+docker compose --env-file "$env" --file frontend.yml up -d
+docker ps --filter "name=$FRONTEND_CONTAINER"
+echo "http://localhost:$WEBPORT"
