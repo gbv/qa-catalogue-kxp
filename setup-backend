@@ -6,6 +6,7 @@ set -euo pipefail
 source default.env
 
 # TODO: install dependencies (php, sqlite3, R...)
+# sudo apt-get install php-sqlite3 php-curl
 
 if [ -d qa-catalogue ]; then git -C qa-catalogue pull ; else git clone https://github.com/pkiraly/qa-catalogue.git; fi
 mkdir -p input; [ -L qa-catalogue/input ] || ln -s ../input qa-catalogue/input

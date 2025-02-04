@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+set -euo pipefail
+
+source default.env
+
+docker pull $SOLR_IMAGE
+
+# allow Solr in Docker to write directory
+# mkdir -p solrdata
+
+# TODO: this is only required once and after updates!
+
+# start solr container
+docker compose --env-file default.env -f solr.yml up -d

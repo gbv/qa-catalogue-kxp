@@ -1,6 +1,6 @@
 default-tab=about
 
-display-completeness=false
+display-completeness=true
 display-classifications=false
 display-authorities=false
 display-pareto=false
@@ -11,13 +11,12 @@ display-timeline=false
 showAdvancedSearchForm=true
 
 # TODO: which of these is needed?
-#id=k10plus_pica_grouped
-#db=k10plus_pica_grouped
-#indexName=k10plus_pica_grouped
-
 catalogue=k10plus_pica_grouped
 dirName=qa-catalogue
+indexName=qa-catalogue
+#id=qa-catalogue
+#db=qa-catalogue
 
 # TODO: why two variables?
-#solrEndpoint4ValidationResults=http://localhost:8983/solr/
+solrEndpoint4ValidationResults=http://qa-catalogue-solr-host:8983/solr/
 mainSolrEndpoint=http://qa-catalogue-solr-host:8983/solr/
