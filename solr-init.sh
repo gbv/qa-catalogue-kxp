@@ -1,16 +1,14 @@
 #!/bin/sh
-#
-# This script is run when the Solr container is started.
-#
-# It create cores on disk (unless they exist) and then runs Solr in the foreground.
-#
+# This script is executed *inside* Solr Docker container on startup.
 
 cd docker/scripts
 
 source run-initdb
 
+# create cores on disk (unless they exist)
 precreate-core qa-catalogue
 precreate-core qa-catalogue_dev
-precreate-core k10plus_pica_grouped_validation
+precreate-core qa-catalogue_validation
 
+# runs Solr in the foreground
 exec solr-fg --user-managed

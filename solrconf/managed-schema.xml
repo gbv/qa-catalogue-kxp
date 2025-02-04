@@ -60,5 +60,4 @@
     <dynamicField name="*_ls"  type="plongs"   indexed="true"  stored="true"/>
     <dynamicField name="*_ds"  type="pdoubles" indexed="true"  stored="true"/>
 
-
 </schema>

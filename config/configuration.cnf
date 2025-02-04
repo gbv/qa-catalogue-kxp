@@ -12,11 +12,12 @@ showAdvancedSearchForm=true
 
 # TODO: which of these is needed?
 catalogue=k10plus_pica_grouped
+#catalogue=qa-catalogue
+
 dirName=qa-catalogue
 indexName=qa-catalogue
 #id=qa-catalogue
 #db=qa-catalogue
 
-# TODO: why two variables?
 solrEndpoint4ValidationResults=http://qa-catalogue-solr-host:8983/solr/
 mainSolrEndpoint=http://qa-catalogue-solr-host:8983/solr/

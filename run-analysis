@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+rm -rf output/qa-catalogue
+rm -rf logs/*
+
+./qa-catalogue.sh all-analyses
+./qa-catalogue.sh index
+pwd
+ls -la output/qa-catalogue

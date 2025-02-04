@@ -9,7 +9,17 @@ This repository contains configuration for an instance of **QA catalogue** ([bac
 - `test` contains sample data (sample of 1000 records from K10plus dump),
   created with `zcat kxp-title-noexp-*.dat.gz | head -1000000 | pica sample 1000 -o ~/kxp-title-noexp-sample.dat.gz`
 
+## Requirements
+
+- Docker with `docker compose` (Ubuntu: run `sudo apt install docker-compose-v2`)
+
 ## Usage
+
+- Create local directories (or symlinks to directories) `input` and `output`
+
+- Start solr: `rm -rf solrdata/*; docker compose --env-file default.env -f solr.yml up`
+
+- `./run-analysis.sh`
 
 - Start frontend with `start-frontend`
 
