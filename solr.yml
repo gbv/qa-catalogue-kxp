@@ -5,10 +5,8 @@ services:
     image: ${SOLR_IMAGE}
     ports:
       - ${SOLR_PORT:-8983}:8983
-    user: 1000:1000 # TODO: don't hardcode
     volumes:
       - ./${SOLR_DATA:-solrdata}:/var/solr
-      - ./solr-init.sh:/solr-init.sh:ro
-      - ./solrconf:/opt/solr/server/solr/configsets/_default
-    command: /solr-init.sh
+      - ./solrconf:/opt/solr/server/solr/configsets/_default:ro
+    command: /opt/solr/server/solr/configsets/_default/solr-init.sh
     container_name: ${SOLR_CONTAINER:-qa-catalogue-solr}

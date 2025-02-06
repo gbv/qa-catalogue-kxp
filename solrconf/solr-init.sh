@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 # This script is executed *inside* Solr Docker container on startup.
 
 cd docker/scripts
-
 source run-initdb
 
 # create cores on disk (unless they exist)
