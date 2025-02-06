@@ -1,7 +1,17 @@
 #!/usr/bin/bash
-set -e
+set -euo pipefail
+
 env=default.env
-source "$env"
-docker compose --env-file "$env" --file frontend.yml up -d
-docker ps --filter "name=$FRONTEND_CONTAINER"
-echo "http://localhost:$WEBPORT"
+
+IP=$(hostname -I | cut -d' ' -f1)
+echo "Passing host IP $IP"
+SOLR_HOST_IP=$IP docker compose --env-file "$env" --file frontend.yml up -d
+
+# check whether frontend is available
+URL="http://localhost:$WEBPORT"
+if curl --output /dev/null --silent --head --fail "$URL"; then
+    echo "$URL"
+else
+    echo >&2 "Frontend not available"
+    exit 1
+fi

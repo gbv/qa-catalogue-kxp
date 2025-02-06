@@ -1,10 +1,6 @@
 #!/usr/bin/bash
 set -euo pipefail
 
-source default.env
-
-docker pull $SOLR_IMAGE
-
 # allow Solr in Docker to write directory
 # mkdir -p solrdata
 

@@ -1,8 +1,8 @@
 default-tab=about
 
 display-completeness=true
-display-classifications=false
-display-authorities=false
+display-classifications=true
+display-authorities=true
 display-pareto=false
 display-history=false
 display-timeline=false
@@ -13,11 +13,7 @@ showAdvancedSearchForm=true
 # TODO: which of these is needed?
 catalogue=k10plus_pica_grouped
 #catalogue=qa-catalogue
-
 dirName=qa-catalogue
 indexName=qa-catalogue
-#id=qa-catalogue
-#db=qa-catalogue
 
-solrEndpoint4ValidationResults=http://qa-catalogue-solr-host:8983/solr/
-mainSolrEndpoint=http://qa-catalogue-solr-host:8983/solr/
+mainSolrEndpoint=http://qa-catalogue-solr:8983/solr/

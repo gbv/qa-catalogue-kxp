@@ -4,7 +4,6 @@ set -e
 rm -rf output/qa-catalogue
 rm -rf logs/*
 
-./qa-catalogue.sh all-analyses
-./qa-catalogue.sh index
-pwd
+./qa-catalogue.sh all
+
 ls -la output/qa-catalogue
