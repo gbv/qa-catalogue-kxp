@@ -8,7 +8,7 @@ echo "Passing host IP $IP"
 SOLR_HOST_IP=$IP docker compose --env-file "$env" --file frontend.yml up -d
 
 # check whether frontend is available
-URL="http://localhost:$WEBPORT"
+URL="http://localhost:${WEBPORT:-83}"
 if curl --output /dev/null --silent --head --fail "$URL"; then
     echo "$URL"
 else

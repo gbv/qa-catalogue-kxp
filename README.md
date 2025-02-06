@@ -27,8 +27,16 @@ make build
 Create local directories (or symlinks to directories) `input` and `output`:
 
 ~~~sh
-mkdir output
-ln -s $DIRECTORY_OF_PICA_DUMP input
+mkdir input output 
+ln -s $DIRECTORY_OF_PICA_DUMP input/qa-catalogue
+~~~
+
+Link input and output directory in qa-catalogue:
+
+~~~sh
+cd qa-catalogue
+ln -s ../input input
+ln -s ../output output
 ~~~
 
 Start Solr image (only required once): 
