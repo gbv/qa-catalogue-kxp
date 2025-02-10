@@ -1,8 +1,8 @@
-input/
-output/
-logs/
+input
+output
+logs
 
-solrdata/
+solrdata
 
 qa-catalogue/
 
