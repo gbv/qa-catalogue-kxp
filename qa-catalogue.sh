@@ -3,6 +3,7 @@ set -o allexport
 
 SCHEMA=PICA
 MASK=*.dat.gz
+AVRAM=`pwd`/avram-k10plus-title.json
 
 TYPE_PARAMS="$TYPE_PARAMS --schemaType PICA"
 TYPE_PARAMS="$TYPE_PARAMS --marcFormat PICA_NORMALIZED"
@@ -17,6 +18,8 @@ TYPE_PARAMS="$TYPE_PARAMS --ignorableFields 001@,001E,001L,001U,001U,001X,001X,0
 TYPE_PARAMS="$TYPE_PARAMS --allowableRecords base64:"$(echo '002@.0 !~ "^L" && 002@.0 !~ "^..[iktN]" && (002@.0 !~ "^.v" || 021A.a?)' | base64 -w 0)
 TYPE_PARAMS="$TYPE_PARAMS --indexWithTokenizedField"
 TYPE_PARAMS="$TYPE_PARAMS --indexFieldCounts --indexSubfieldCounts"
+
+TYPE_PARAMS="$TYPE_PARAMS --picaSchemaFile=$AVRAM"
 
 TYPE_PARAMS="$TYPE_PARAMS --fieldPrefix bib"
 
