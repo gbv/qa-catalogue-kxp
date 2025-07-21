@@ -57,6 +57,6 @@ Run analysis
 Start frontend (only required once)
 
 ~~~sh
-`start-frontend`
+`./start-frontend`
 ~~~
 
