@@ -10,3 +10,5 @@ reports/*.dat
 reports/*.pp
 reports/*.ppn
 reports/*.csv
+
+node_modules/

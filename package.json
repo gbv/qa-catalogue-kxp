@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "allfields": "node avram2allfields.js < avram-k10plus-title.json > test/allfields.pp",
+    "validate-allfields": "avram -s avram-k10plus-title.json test/allfields.pp"
+  },
+  "type": "module",
+  "dependencies": {
+    "avram": "^0.6.9",
+    "pica-data": "^0.7.0"
+  }
+}

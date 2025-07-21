@@ -13,6 +13,7 @@ This repository contains configuration for an instance of **QA catalogue** ([bac
 - `default.env` contains environment variables to specify Docker images and container names
 - `test` contains sample data (sample of 1000 records from K10plus dump),
   created with `zcat kxp-title-noexp-*.dat.gz | head -1000000 | pica sample 1000 -o ~/kxp-title-noexp-sample.dat.gz`
+  - file `test/allfields.pp` contains one record generated from Avram with `npm run allfields` (requires `npm install` first)
 
 ## Installation and Usage
 
