@@ -52,6 +52,7 @@ docker compose --env-file default.env -f solr.yml up -d
 Run analysis
 
 ~~~sh
+chmod +x run-analysis
 `./run-analysis`
 ~~~
 
