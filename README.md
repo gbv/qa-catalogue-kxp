@@ -28,6 +28,7 @@ make build
 Create local directories (or symlinks to directories) `input` and `output`:
 
 ~~~sh
+cd qa-catalogue
 mkdir input output 
 ln -s $DIRECTORY_OF_PICA_DUMP input/qa-catalogue
 ~~~
