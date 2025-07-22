@@ -53,7 +53,6 @@ Make sure that port 8983 is free on your system before you start Solr.
 Run analysis
 
 ~~~sh
-cd qa-catalogue
 chmod +x run-analysis
 `./run-analysis`
 ~~~
