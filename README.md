@@ -56,7 +56,7 @@ Run analysis
 chmod +x run-analysis
 `./run-analysis`
 ~~~
-PICA data must be stored in Input in a separate folder. 
+PICA data must be stored in ./qa-catlogue/input in a separate folder. 
 They must be in .dat.gz format.
 
 Start frontend (only required once)
