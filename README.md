@@ -44,6 +44,7 @@ ln -s ../output output
 Start Solr image (only required once): 
 
 ~~~
+cd ..
 mkdir solrdata
 sudo chown 8983:8983 solrdata
 docker compose --env-file default.env -f solr.yml up -d
@@ -52,6 +53,7 @@ docker compose --env-file default.env -f solr.yml up -d
 Run analysis
 
 ~~~sh
+cd qa-catalogue
 chmod +x run-analysis
 `./run-analysis`
 ~~~
