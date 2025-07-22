@@ -41,14 +41,14 @@ ln -s ../input input
 ln -s ../output output
 ~~~
 
-Start Solr image (only required once): 
-
+Start Solr image (only required once) 
 ~~~
 cd ..
 mkdir solrdata
 sudo chown 8983:8983 solrdata
 docker compose --env-file default.env -f solr.yml up -d
 ~~~
+Make sure that port 8983 is free on your system before you start Solr.
 
 Run analysis
 
