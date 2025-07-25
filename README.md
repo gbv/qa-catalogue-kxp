@@ -50,13 +50,25 @@ docker compose --env-file default.env -f solr.yml up -d
 ~~~
 Make sure that port 8983 is free on your system before you start Solr.
 
+Create executable JAR and Java Maven project
+
+~~~sh
+target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
+mvn clean package
+~~~
+
+Now you can start the validator directly with Java
+~~~sh
+java -Xmx8g -cp target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar de.gwdg.metadataqa.marc.cli.ValidatorCli --details --trimId --summary --format csv --defaultRecordType BOOKS --outputDir ../output/25-08911-005 --detailsFileName issue-details.csv --summaryFileName issue-summary.csv --schemaType PICA --marcFormat PICA_NORMALIZED --emptyLargeCollectors ../input/25-08911-005/kxp_sample.dat.gz
+~~~
+
 Run analysis
 
 ~~~sh
 chmod +x run-analysis
 `./run-analysis`
 ~~~
-PICA data must be stored in ./qa-catlogue/input in a separate folder. 
+PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
 They must be in .dat.gz format.
 
 Start frontend (only required once)
