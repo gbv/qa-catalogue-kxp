@@ -50,8 +50,13 @@ docker compose --env-file default.env -f solr.yml up -d
 ~~~
 Make sure that port 8983 is free on your system before you start Solr.
 
-Create executable JAR and Java Maven project
+Prepare input data and create executable JAR and Java Maven project.
 
+Place your .dat.gz files inside the ./input/qa-catalogue/ directory. The analysis expects files at /opt/qa-catalogue/marc/qa-catalogue/*.dat.gz inside the container
+
+Run the container with the input directory mounted to /opt/qa-catalogue/marc
+
+After that:
 ~~~sh
 target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
 mvn clean package
