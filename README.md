@@ -49,16 +49,12 @@ docker compose --env-file default.env -f solr.yml up -d
 ~~~
 Make sure that port 8983 is free on your system before you start Solr.
 
-Prepare input data and create executable JAR and Java Maven project.
-
+PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
+They must be in .dat.gz format.
 Place your .dat.gz files inside the ./input/qa-catalogue/ directory. The analysis expects files at /opt/qa-catalogue/marc/qa-catalogue/*.dat.gz inside the container
 
 Run the container with the input directory mounted to /opt/qa-catalogue/marc
-
 ~~~sh
-docker stop metadata-qa-marc
-docker rm metadata-qa-marc
-
 docker run -d --name metadata-qa-marc \
   -v /home/schaeferd/qa-catalogue-kxp/input:/opt/qa-catalogue/marc \
   -v /home/schaeferd/qa-catalogue-kxp/output:/opt/qa-catalogue/marc/_output \
@@ -69,9 +65,6 @@ docker run -d --name metadata-qa-marc \
   pkiraly/metadata-qa-marc tail -f /dev/null
 ~~~
 
-PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
-They must be in .dat.gz format.
-
 If necessary install R and install required R packages
 ~~~sh
 sudo apt update
@@ -79,7 +72,7 @@ sudo apt install r-base
 Rscript -e "install.packages('tidyverse', repos='https://cran.r-project.org')"
 ~~~
 
-If necessary install Jar/mvn
+If necessary install mvn
 ~~~sh
 mvn clean package -DskipTests
 target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar (?????????????????????????????????????)
