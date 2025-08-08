@@ -80,7 +80,7 @@ sudo apt install r-base
 
 If necessary install Jar/mvn
 ~~~sh
-mvn clean package
+mvn clean package -DskipTests
 target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
 ~~~
 
