@@ -72,10 +72,11 @@ docker run -d --name metadata-qa-marc \
 PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
 They must be in .dat.gz format.
 
-If necessary install R 
+If necessary install R and install required R packages
 ~~~sh
 sudo apt update
 sudo apt install r-base
+Rscript -e "install.packages('tidyverse', repos='https://cran.r-project.org')"
 ~~~
 
 If necessary install Jar/mvn
