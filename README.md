@@ -28,7 +28,6 @@ make build
 Create local directories (or symlinks to directories) `input` and `output`:
 
 ~~~sh
-cd qa-catalogue-kxp/qa-catalogue
 mkdir input output 
 ln -s $DIRECTORY_OF_PICA_DUMP input/qa-catalogue
 ~~~
@@ -70,13 +69,16 @@ docker run -d --name metadata-qa-marc \
   pkiraly/metadata-qa-marc tail -f /dev/null
 ~~~
 
-After that:
+PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
+They must be in .dat.gz format.
+
+If necessary:
 ~~~sh
 target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
 mvn clean package
 ~~~
 
-Now you can start the validator directly with Java
+Now you can also start the validator directly with Java
 ~~~sh
 java -Xmx8g -cp target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar de.gwdg.metadataqa.marc.cli.ValidatorCli --details --trimId --summary --format csv --defaultRecordType BOOKS --outputDir ../output/25-08911-005 --detailsFileName issue-details.csv --summaryFileName issue-summary.csv --schemaType PICA --marcFormat PICA_NORMALIZED --emptyLargeCollectors ../input/25-08911-005/kxp_sample.dat.gz
 ~~~
@@ -87,8 +89,7 @@ Run analysis
 chmod +x run-analysis
 `./run-analysis`
 ~~~
-PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
-They must be in .dat.gz format.
+
 
 Start frontend (only required once)
 
