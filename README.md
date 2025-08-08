@@ -72,10 +72,16 @@ docker run -d --name metadata-qa-marc \
 PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
 They must be in .dat.gz format.
 
-If necessary:
+If necessary install Jar/mvn
 ~~~sh
 target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
 mvn clean package
+~~~
+
+If necessary install R 
+~~~sh
+sudo apt update
+sudo apt install r-base
 ~~~
 
 Now you can also start the validator directly with Java
