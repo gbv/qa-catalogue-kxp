@@ -82,16 +82,10 @@ Rscript -e "install.packages('tidyverse', repos='https://cran.r-project.org')"
 If necessary install Jar/mvn
 ~~~sh
 mvn clean package -DskipTests
-target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
-~~~
-
-Now you can also start the validator directly with Java
-~~~sh
-java -Xmx8g -cp target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar de.gwdg.metadataqa.marc.cli.ValidatorCli --details --trimId --summary --format csv --defaultRecordType BOOKS --outputDir ../output/25-08911-005 --detailsFileName issue-details.csv --summaryFileName issue-summary.csv --schemaType PICA --marcFormat PICA_NORMALIZED --emptyLargeCollectors ../input/25-08911-005/kxp_sample.dat.gz
+target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar (?????????????????????????????????????)
 ~~~
 
 Run analysis
-
 ~~~sh
 chmod +x run-analysis
 `./run-analysis`
