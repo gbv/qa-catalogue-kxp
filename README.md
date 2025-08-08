@@ -56,6 +56,20 @@ Place your .dat.gz files inside the ./input/qa-catalogue/ directory. The analysi
 
 Run the container with the input directory mounted to /opt/qa-catalogue/marc
 
+~~~sh
+docker stop metadata-qa-marc
+docker rm metadata-qa-marc
+
+docker run -d --name metadata-qa-marc \
+  -v /home/schaeferd/qa-catalogue-kxp/input:/opt/qa-catalogue/marc \
+  -v /home/schaeferd/qa-catalogue-kxp/output:/opt/qa-catalogue/marc/_output \
+  -v /home/schaeferd/qa-catalogue-kxp/logs:/opt/qa-catalogue/logs \
+  -v /home/schaeferd/qa-catalogue-kxp/web-config:/var/www/html/qa-catalogue/config \
+  -v /etc/timezone:/etc/timezone:ro \
+  -v /etc/localtime:/etc/localtime:ro \
+  pkiraly/metadata-qa-marc tail -f /dev/null
+~~~
+
 After that:
 ~~~sh
 target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar
