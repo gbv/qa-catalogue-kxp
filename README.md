@@ -32,6 +32,8 @@ mkdir input output
 ln -s $DIRECTORY_OF_PICA_DUMP input/qa-catalogue
 ~~~
 
+PICA data must be stored in the directory symlinked via `input/qa-catalogue`. Records must be in `.dat.gz` format.
+
 Link input and output directory in qa-catalogue:
 
 ~~~sh
@@ -40,20 +42,17 @@ ln -s ../input input
 ln -s ../output output
 ~~~
 
-Start Solr image (only required once) 
+Start Solr image (only required once). Make sure that port 8983 is free on your system before you start Solr:
+
 ~~~
 cd ..
 mkdir solrdata
 sudo chown 8983:8983 solrdata
 docker compose --env-file default.env -f solr.yml up -d
 ~~~
-Make sure that port 8983 is free on your system before you start Solr.
 
-PICA data must be stored in qa-catlogue-kxp/input in a separate folder. 
-They must be in .dat.gz format.
-Place your .dat.gz files inside the ./input/qa-catalogue/ directory. The analysis expects files at /opt/qa-catalogue/marc/qa-catalogue/*.dat.gz inside the container
+Run the container with the input directory mounted to `/opt/qa-catalogue/marc`. The analysis expects files at `/opt/qa-catalogue/marc/qa-catalogue/*.dat.gz` inside the container
 
-Run the container with the input directory mounted to /opt/qa-catalogue/marc
 ~~~sh
 docker run -d --name metadata-qa-marc \
   -v /home/schaeferd/qa-catalogue-kxp/input:/opt/qa-catalogue/marc \
@@ -80,10 +79,8 @@ target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar (??????????????????
 
 Run analysis
 ~~~sh
-chmod +x run-analysis
 `./run-analysis`
 ~~~
-
 
 Start frontend (only required once)
 
