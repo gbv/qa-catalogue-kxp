@@ -17,7 +17,7 @@ This repository contains configuration for an instance of **QA catalogue** ([bac
 
 ## Installation and Usage
 
-# Clone and install QA catalogue backend: 
+### Clone and install QA catalogue backend: 
 
 ~~~sh
 git clone https://github.com/pkiraly/qa-catalogue.git
@@ -25,7 +25,7 @@ cd ~/qa-catalogue
 make build
 ~~~
 
-# Setup environment 
+### Setup environment 
 
 Create local directories (or symlinks to directories) `input` and `output`:
 
@@ -49,7 +49,7 @@ ln -s ../input input
 ln -s ../output output
 ~~~
 
-# Run Solr
+### Run Solr
 
 Start Solr image (only required once). 
 Make sure that port 8983 is free on your system:
@@ -67,7 +67,7 @@ If Solr is not running during your analysis, you might have to start Solr again
 docker run -d --name qa-catalogue-solr -p 8983:8983 solr:9.8.0
 ~~~
 
-# Run the container
+### Run the container
 
 Run the container with the input directory mounted to `/opt/qa-catalogue/input`. The analysis expects files at `/opt/qa-catalogue/input/qa-catalogue/*.dat.gz`.
 
@@ -94,7 +94,7 @@ cd ~/qa-catalogue-kxp/qa-catalogue
 mvn clean package -DskipTests
 ~~~
 
-# Run the analysis and start the frontend
+### Run the analysis and start the frontend
 Run analysis
 
 ~~~sh
