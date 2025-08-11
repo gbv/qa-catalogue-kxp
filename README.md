@@ -17,13 +17,15 @@ This repository contains configuration for an instance of **QA catalogue** ([bac
 
 ## Installation and Usage
 
-Install QA catalogue backend: 
+# Clone and install QA catalogue backend: 
 
 ~~~sh
 git clone https://github.com/pkiraly/qa-catalogue.git
 cd ~/qa-catalogue
 make build
 ~~~
+
+# Setup environment 
 
 Create local directories (or symlinks to directories) `input` and `output`:
 
@@ -32,7 +34,12 @@ mkdir input output
 ln -s $DIRECTORY_OF_PICA_DUMP input/qa-catalogue
 ~~~
 
-PICA data must be stored in the directory symlinked via `input/qa-catalogue`. Records must be in `.dat.gz` format.
+PICA data must be stored in or symlinked via `input/qa-catalogue`. Records must be in `.dat.gz` format.
+You can compress raw files with:
+
+~~~sh
+gzip -c raw-data.dat > raw-data.dat.gz
+~~~
 
 Link input and output directory in qa-catalogue:
 
@@ -42,16 +49,27 @@ ln -s ../input input
 ln -s ../output output
 ~~~
 
-Start Solr image (only required once). Make sure that port 8983 is free on your system before you start Solr:
+# Run Solr
 
-~~~
+Start Solr image (only required once). 
+Make sure that port 8983 is free on your system:
+
+~~~sh
 cd ..
 mkdir solrdata
 sudo chown 8983:8983 solrdata
 docker compose --env-file default.env -f solr.yml up -d
 ~~~
 
-Run the container with the input directory mounted to `/opt/qa-catalogue/marc`. The analysis expects files at `/opt/qa-catalogue/marc/qa-catalogue/*.dat.gz` inside the container
+If Solr is not running during your analysis, you might have to start Solr again
+
+~~~sh
+docker run -d --name qa-catalogue-solr -p 8983:8983 solr:9.8.0
+~~~
+
+# Run the container
+
+Run the container with the input directory mounted to `/opt/qa-catalogue/input`. The analysis expects files at `/opt/qa-catalogue/input/qa-catalogue/*.dat.gz`.
 
 ~~~sh
 docker pull ghcr.io/pkiraly/qa-catalogue-slim:main
@@ -65,20 +83,20 @@ docker run -d --name qa-catalogue-slim \
   ghcr.io/pkiraly/qa-catalogue-slim:main tail -f /dev/null
 ~~~
 
-If necessary install R and install required R packages
+Optional: Install R, required R packages, and Maven (only if you need to run the analysis locally).
+
 ~~~sh
 sudo apt update
 sudo apt install r-base
 Rscript -e "install.packages('tidyverse', repos='https://cran.r-project.org')"
-~~~
 
-If necessary install mvn
-~~~sh
 cd ~/qa-catalogue-kxp/qa-catalogue
 mvn clean package -DskipTests
 ~~~
 
+# Run the analysis and start the frontend
 Run analysis
+
 ~~~sh
 `./run-analysis`
 ~~~
