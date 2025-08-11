@@ -17,7 +17,7 @@ This repository contains configuration for an instance of **QA catalogue** ([bac
 
 ## Installation and Usage
 
-Install QA catalogue backend:
+Install QA catalogue backend: 
 
 ~~~sh
 git clone https://github.com/pkiraly/qa-catalogue.git
