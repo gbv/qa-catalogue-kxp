@@ -21,7 +21,7 @@ Install QA catalogue backend:
 
 ~~~sh
 git clone https://github.com/pkiraly/qa-catalogue.git
-cd qa-catalogue
+cd ~/qa-catalogue
 make build
 ~~~
 
@@ -37,7 +37,7 @@ PICA data must be stored in the directory symlinked via `input/qa-catalogue`. Re
 Link input and output directory in qa-catalogue:
 
 ~~~sh
-cd qa-catalogue-kxp/qa-catalogue
+cd ~/qa-catalogue-kxp/qa-catalogue
 ln -s ../input input
 ln -s ../output output
 ~~~
@@ -54,14 +54,15 @@ docker compose --env-file default.env -f solr.yml up -d
 Run the container with the input directory mounted to `/opt/qa-catalogue/marc`. The analysis expects files at `/opt/qa-catalogue/marc/qa-catalogue/*.dat.gz` inside the container
 
 ~~~sh
-docker run -d --name metadata-qa-marc \
-  -v /home/schaeferd/qa-catalogue-kxp/input:/opt/qa-catalogue/marc \
-  -v /home/schaeferd/qa-catalogue-kxp/output:/opt/qa-catalogue/marc/_output \
+docker pull ghcr.io/pkiraly/qa-catalogue-slim:main
+docker run -d --name qa-catalogue-slim \
+  -v /home/schaeferd/qa-catalogue-kxp/input:/opt/qa-catalogue/input \
+  -v /home/schaeferd/qa-catalogue-kxp/output:/opt/qa-catalogue/output \
   -v /home/schaeferd/qa-catalogue-kxp/logs:/opt/qa-catalogue/logs \
   -v /home/schaeferd/qa-catalogue-kxp/web-config:/var/www/html/qa-catalogue/config \
   -v /etc/timezone:/etc/timezone:ro \
   -v /etc/localtime:/etc/localtime:ro \
-  pkiraly/metadata-qa-marc tail -f /dev/null
+  ghcr.io/pkiraly/qa-catalogue-slim:main tail -f /dev/null
 ~~~
 
 If necessary install R and install required R packages
@@ -73,8 +74,8 @@ Rscript -e "install.packages('tidyverse', repos='https://cran.r-project.org')"
 
 If necessary install mvn
 ~~~sh
+cd ~/qa-catalogue-kxp/qa-catalogue
 mvn clean package -DskipTests
-target/qa-catalogue-0.8.0-SNAPSHOT-jar-with-dependencies.jar (?????????????????????????????????????)
 ~~~
 
 Run analysis
