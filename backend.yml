@@ -1,9 +1,6 @@
-# Used to start the base image with `docker compose up -d`
-# docker-compose.yml for qa-catalogue (backend)
-
 services:
-  app:
-    image: ${IMAGE:-pkiraly/metadata-qa-marc}
+  backend:
+    image: ${IMAGE:-ghcr.io/pkiraly/qa-catalogue-slim:main}
     volumes:
       - ./${INPUT:-input}:/opt/qa-catalogue/input
       - ./${OUTPUT:-output}:/opt/qa-catalogue/output
@@ -12,3 +9,4 @@ services:
       - /etc/timezone:/etc/timezone:ro    # Sync timezone
       - /etc/localtime:/etc/localtime:ro  # Sync localtime
     container_name: ${CONTAINER:-metadata-qa-marc}
+    command: /opt/qa-catalogue/qa-catalogue

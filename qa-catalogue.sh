@@ -2,7 +2,7 @@
 set -o allexport
 
 SCHEMA=PICA
-MASK=*.dat.gz
+MASK="*.dat.gz"
 AVRAM=`pwd`/avram-k10plus-title.json
 
 TYPE_PARAMS="$TYPE_PARAMS --schemaType PICA"
@@ -23,6 +23,4 @@ TYPE_PARAMS="$TYPE_PARAMS --picaSchemaFile=$AVRAM"
 
 TYPE_PARAMS="$TYPE_PARAMS --fieldPrefix bib"
 
-# run via local instance - this should be moved to Docker
-cd qa-catalogue
-exec ./qa-catalogue "$@"
+docker compose -f backend.yml run --rm -e TYPE_PARAMS -e MASK -e SCHEMA backend /opt/qa-catalogue/qa-catalogue "$@"

@@ -1,14 +1,11 @@
 # docker-compose.yml for qa-catalogue-web (frontend)
 
 services:
-  app:
-    image: ${FRONTEND_IMAGE:-qa-catalogue-web}
-    build:
-      context: .
-      dockerfile: Dockerfile
+  frontend:
+    image: ${FRONTEND_IMAGE:-ghcr.io/pkiraly/qa-catalogue-web:main}
     volumes:
-      - ./${BASE_OUTPUT_DIR:-output}:/var/www/html/metadata-qa
-      - ./${WEB_CONFIG:-webconf}:/var/www/html/config
+      - ./${OUTPUT:-output}:/var/www/html/metadata-qa
+      - ./${WEB_CONFIG:-web-config}:/var/www/html/config
     ports:
       - ${WEBPORT:-80}:80
     container_name: ${FRONTEND_CONTAINER:-qa-catalogue-web}
