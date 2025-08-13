@@ -30,7 +30,7 @@ PICA data must be stored in directory `input/qa-catalogue`. Records must be in `
 You can compress raw files with:
 
 ~~~sh
-gzip -c raw-data.dat > raw-data.dat.gz
+gzip -c NAME_OF_YOUR_DATASET.dat > NAME_OF_YOUR_DATASET.gz
 ~~~
 
 ### Run Solr
