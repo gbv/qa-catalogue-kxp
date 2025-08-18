@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -o allexport
 
+# -----------------------------
+# Solr-Host
+# -----------------------------
+SOLR_HOST=http://172.17.0.1:8983
+
 SCHEMA=PICA
 MASK="*.dat.gz"
 AVRAM=`pwd`/avram-k10plus-title.json
@@ -23,4 +28,13 @@ TYPE_PARAMS="$TYPE_PARAMS --picaSchemaFile=$AVRAM"
 
 TYPE_PARAMS="$TYPE_PARAMS --fieldPrefix bib"
 
-docker compose -f backend.yml run --rm -e TYPE_PARAMS -e MASK -e SCHEMA backend /opt/qa-catalogue/qa-catalogue "$@"
+# -----------------------------
+# Docker Compose: Orphans entfernen & Container starten
+# -----------------------------
+docker compose -f backend.yml down --remove-orphans
+docker compose -f backend.yml run --rm \
+  -e TYPE_PARAMS \
+  -e MASK \
+  -e SCHEMA \
+  -e SOLR_HOST \
+  backend /opt/qa-catalogue/qa-catalogue "$@"
