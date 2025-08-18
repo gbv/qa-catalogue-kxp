@@ -40,7 +40,7 @@ Start Solr image (only required once).
 Make sure that port 8983 is free on your system:
 
 ~~~sh
-cd ..
+cd ../..
 mkdir solrdata
 sudo chown 8983:8983 solrdata
 docker compose --env-file default.env -f solr.yml up -d
