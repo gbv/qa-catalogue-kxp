@@ -30,6 +30,7 @@ PICA data must be stored in directory `input/qa-catalogue`. Records must be in `
 You can compress raw files with:
 
 ~~~sh
+cp NAME_OF_YOUR_DATASET.pp NAME_OF_YOUR_DATASET.dat
 gzip -c NAME_OF_YOUR_DATASET.dat > NAME_OF_YOUR_DATASET.gz
 ~~~
 
