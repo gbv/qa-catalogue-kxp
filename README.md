@@ -60,6 +60,12 @@ Run analysis with Docker:
 ./run-analysis
 ~~~
 
+If necessary:
+~~~sh
+docker rm -f qa-catalogue-backend
+docker compose --env-file default.env -f backend.yml up -d
+~~~
+
 ### Start frontend
 
 Optional and only required once, to inspect the results.
