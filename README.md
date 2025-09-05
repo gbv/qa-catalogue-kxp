@@ -57,7 +57,7 @@ docker run -d --name qa-catalogue-solr -p 8983:8983 solr:9.8.0
 Run analysis with Docker:
 
 ~~~sh
-`./run-analysis`
+./run-analysis
 ~~~
 
 ### Start frontend
@@ -65,6 +65,6 @@ Run analysis with Docker:
 Optional and only required once, to inspect the results.
 
 ~~~sh
-`./start-frontend`
+./start-frontend
 ~~~
 
