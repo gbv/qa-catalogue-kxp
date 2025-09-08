@@ -71,6 +71,12 @@ docker compose --env-file default.env -f backend.yml up -d
 Optional and only required once, to inspect the results.
 
 ~~~sh
+mv output/qa-catalogue/* output/
+rmdir output/qa-catalogue
 ./start-frontend
 ~~~
 
+If necessary:
+~~~sh
+docker rm -f qa-catalogue-frontend
+~~~
