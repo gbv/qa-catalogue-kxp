@@ -80,3 +80,9 @@ If necessary:
 ~~~sh
 docker rm -f qa-catalogue-frontend
 ~~~
+
+If you get an error message: invalid IP address in add-host:
+~~~sh
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' qa-catalogue-solr
+export SOLR_HOST_IP=$YOUR_IP_ADDRESS
+~~~
